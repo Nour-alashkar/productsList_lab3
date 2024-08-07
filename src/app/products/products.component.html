@@ -1,0 +1,24 @@
+
+
+<div class="conatiner ">
+    <div class="items row justify-content-between">
+        <div class="card item col-md-3 m-md-5  " *ngFor="let product of productsArray">
+            
+                <img [src]="product.image" class="card-img-top" alt="{{ product.title }}">
+           
+
+            <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <p class="card-text"><strong>Price: </strong>${{ product.price }}</p>
+                <p class="card-text"><strong>Rating: </strong>
+                    <span *ngFor="let i of [1,2,3,4,5]" [ngClass]="{'text-warning': i <= product.rating.rate}">
+                        <i class="fa-solid fa-star">*</i>
+                    </span>
+                    ({{ product.rating.count }} reviews)
+                </p>
+
+                <button (click)="viewProduct(product.id)" class="btn btn-primary">view Product</button>
+            </div>
+        </div>
+    </div>
+</div>
